@@ -1,0 +1,1370 @@
+<div id="barraTopo">
+	<div class="migalha">
+		<span>Dashboard</span>
+	</div>
+</div>
+<div class="boxGrid" style="overflow: hidden">
+	<table width="100%" style="min-width: 400px" cellspacing="0"
+		cellpadding="0" border="0" class="tabelaSistema">
+		<tr>
+			<th class="thBg2" colspan="3" style="height: 15px">BFM</th>
+			<th colspan="3" style="height: 15px">BFF</th>
+		</tr>
+
+
+		<tr>
+			<th width="16%" style="height: 15px">ARQUIVOS PRÉ</th>
+			<th width="16%" style="height: 15px">ARQUIVOS PÓS</th>
+			<th width="16%" style="height: 15px">ARQUIVOS FIXO</th>
+			<th width="16%" class="thBg2" style="height: 15px">ARQUIVOS PRÉ</th>
+			<th width="16%" class="thBg2" style="height: 15px">ARQUIVOS PÓS</th>
+			<th width="16%" class="thBg2" style="height: 15px">ARQUIVOS FIXO</th>
+		</tr>
+		<tr>
+			<td height="100"><div style="overflow: hidden; height: 250px;">
+					<div class="pizza" id="svaPre" style="min-width: 100px;"></div>
+				</div>
+			</td>
+			<td height="100"><div style="overflow: hidden; height: 250px;">
+					<div class="pizza" id="svaPos" style="min-width: 100px;"></div>
+				</div>
+			</td>
+			<td height="100"><div style="overflow: hidden; height: 250px;">
+					<div class="pizza" id="svaFixo" style="min-width: 100px;"></div>
+				</div>
+			</td>
+
+			<td height="100"><div style="overflow: hidden; height: 250px;">
+					<div class="pizza" id="svaPre2" style="min-width: 100px;"></div>
+				</div>
+			</td>
+			<td height="100"><div style="overflow: hidden; height: 250px;">
+					<div class="pizza" id="svaPos2" style="min-width: 100px;"></div>
+				</div>
+			</td>
+			<td height="100"><div style="overflow: hidden; height: 250px;">
+					<div class="pizza" id="svaFixo2" style="min-width: 100px;"></div>
+				</div>
+			</td>
+
+		</tr>
+
+
+		<tr>
+			<th style="height: 15px">REGISTROS PRÉ</th>
+			<th style="height: 15px">REGISTROS PÓS</th>
+			<th style="height: 15px">REGISTROS FIXO</th>
+			<th style="height: 15px" class="thBg2">REGISTROS PRÉ</th>
+			<th style="height: 15px" class="thBg2">REGISTROS PÓS</th>
+			<th style="height: 15px" class="thBg2">REGISTROS FIXO</th>
+		</tr>
+		<tr>
+			<td height="100"><div style="overflow: hidden; height: 250px;">
+					<div class="pizza" id="svaPreRe" style="min-width: 100px;"></div>
+				</div>
+			</td>
+			<td height="100"><div style="overflow: hidden; height: 250px;">
+					<div class="pizza" id="svaPosRe" style="min-width: 100px;"></div>
+				</div>
+			</td>
+			<td height="100"><div style="overflow: hidden; height: 250px;">
+					<div class="pizza" id="svaFixoRe" style="min-width: 100px;"></div>
+				</div>
+			</td>
+
+			<td height="100"><div style="overflow: hidden; height: 250px;">
+					<div class="pizza" id="svaPreRe2" style="min-width: 100px;"></div>
+				</div>
+			</td>
+			<td height="100"><div style="overflow: hidden; height: 250px;">
+					<div class="pizza" id="svaPosRe2" style="min-width: 100px;"></div>
+				</div>
+			</td>
+			<td height="100"><div style="overflow: hidden; height: 250px;">
+					<div class="pizza" id="svaFixoRe2" style="min-width: 100px;"></div>
+				</div>
+			</td>
+
+		</tr>
+		<tr>
+			<td colspan="3"><div id="svaPreTime"
+					style="min-width: 150px; margin: 0 auto"></div>
+			</td>
+			<td colspan="3"><div id="bffPreTime"
+					style="min-width: 150px; margin: 0 auto"></div>
+			</td>
+		</tr>
+	</table>
+
+</div>
+<script type="text/javascript">
+	$(function() {
+		$('#svaPre')
+				.highcharts(
+						{
+							colors : [
+									{
+										radialGradient : {
+											cx : 0.5,
+											cy : 0.3,
+											r : 0.7
+										},
+										stops : [
+												[ 0, '#4F81BD' ],
+												[
+														1,
+														Highcharts.Color(
+																'#4F81BD')
+																.brighten(-0.3)
+																.get('hex') ] // darken
+										]
+									},
+									{
+										radialGradient : {
+											cx : 0.5,
+											cy : 0.3,
+											r : 0.7
+										},
+										stops : [
+												[ 0, '#C0504D' ],
+												[
+														1,
+														Highcharts.Color(
+																'#C0504D')
+																.brighten(-0.3)
+																.get('hex') ] // darken
+										]
+									},
+									{
+										radialGradient : {
+											cx : 0.5,
+											cy : 0.3,
+											r : 0.7
+										},
+										stops : [
+												[ 0, '#9BBB59' ],
+												[
+														1,
+														Highcharts.Color(
+																'#9BBB59')
+																.brighten(-0.3)
+																.get('hex') ] // darken
+										]
+									},
+
+							],
+
+							chart : {
+								plotBackgroundColor : null,
+								plotBorderWidth : null,
+								plotShadow : false,
+								spacingTop : -140
+							},
+							title : {
+								text : 'Processamento BFM'
+							},
+							tooltip : {
+								pointFormat : '{series.name}: <b>{point.percentage:.1f}%</b>'
+							},
+							plotOptions : {
+								pie : {
+									allowPointSelect : true,
+									cursor : 'pointer',
+									dataLabels : {
+										distance : -30,
+										enabled : false,
+										color : 'white',
+										format : '<b style="font-size:8px">{point.percentage:.1f}%</b>',
+										style : {
+											color : (Highcharts.theme && Highcharts.theme.contrastTextColor)
+													|| 'black'
+										}
+									}
+								}
+							},
+							series : [ {
+								type : 'pie',
+								name : 'ARQUIVOS PRÉ',
+								data : [ [ 'Processados', 80 ], [ 'Erro', 10 ],
+										[ 'Não Processados', 40 ], ]
+							} ]
+						});
+
+		$('#svaPos')
+				.highcharts(
+						{
+							colors : [
+									{
+										radialGradient : {
+											cx : 0.5,
+											cy : 0.3,
+											r : 0.7
+										},
+										stops : [
+												[ 0, '#4F81BD' ],
+												[
+														1,
+														Highcharts.Color(
+																'#4F81BD')
+																.brighten(-0.3)
+																.get('hex') ] // darken
+										]
+									},
+									{
+										radialGradient : {
+											cx : 0.5,
+											cy : 0.3,
+											r : 0.7
+										},
+										stops : [
+												[ 0, '#C0504D' ],
+												[
+														1,
+														Highcharts.Color(
+																'#C0504D')
+																.brighten(-0.3)
+																.get('hex') ] // darken
+										]
+									},
+									{
+										radialGradient : {
+											cx : 0.5,
+											cy : 0.3,
+											r : 0.7
+										},
+										stops : [
+												[ 0, '#9BBB59' ],
+												[
+														1,
+														Highcharts.Color(
+																'#9BBB59')
+																.brighten(-0.3)
+																.get('hex') ] // darken
+										]
+									},
+
+							],
+
+							chart : {
+								plotBackgroundColor : null,
+								plotBorderWidth : null,
+								plotShadow : false,
+								spacingTop : -140
+							},
+							title : {
+								text : 'Processamento BFM'
+							},
+							tooltip : {
+								pointFormat : '{series.name}: <b>{point.percentage:.1f}%</b>'
+							},
+							plotOptions : {
+								pie : {
+									allowPointSelect : true,
+									cursor : 'pointer',
+									dataLabels : {
+										distance : -30,
+										enabled : false,
+										color : 'white',
+										format : '<b style="font-size:8px">{point.percentage:.1f}%</b>',
+										style : {
+											color : (Highcharts.theme && Highcharts.theme.contrastTextColor)
+													|| 'black'
+										}
+									}
+								}
+							},
+							series : [ {
+								type : 'pie',
+								name : 'ARQUIVOS PRÉ',
+								data : [ [ 'Processados', 80 ], [ 'Erro', 10 ],
+										[ 'Não Processados', 40 ], ]
+							} ]
+						});
+
+		$('#svaFixo')
+				.highcharts(
+						{
+							colors : [
+									{
+										radialGradient : {
+											cx : 0.5,
+											cy : 0.3,
+											r : 0.7
+										},
+										stops : [
+												[ 0, '#4F81BD' ],
+												[
+														1,
+														Highcharts.Color(
+																'#4F81BD')
+																.brighten(-0.3)
+																.get('hex') ] // darken
+										]
+									},
+									{
+										radialGradient : {
+											cx : 0.5,
+											cy : 0.3,
+											r : 0.7
+										},
+										stops : [
+												[ 0, '#C0504D' ],
+												[
+														1,
+														Highcharts.Color(
+																'#C0504D')
+																.brighten(-0.3)
+																.get('hex') ] // darken
+										]
+									},
+									{
+										radialGradient : {
+											cx : 0.5,
+											cy : 0.3,
+											r : 0.7
+										},
+										stops : [
+												[ 0, '#9BBB59' ],
+												[
+														1,
+														Highcharts.Color(
+																'#9BBB59')
+																.brighten(-0.3)
+																.get('hex') ] // darken
+										]
+									},
+
+							],
+
+							chart : {
+								plotBackgroundColor : null,
+								plotBorderWidth : null,
+								plotShadow : false,
+								spacingTop : -140
+							},
+							title : {
+								text : 'Processamento BFF'
+							},
+							tooltip : {
+								pointFormat : '{series.name}: <b>{point.percentage:.1f}%</b>'
+							},
+							plotOptions : {
+								pie : {
+									allowPointSelect : true,
+									cursor : 'pointer',
+									dataLabels : {
+										distance : -30,
+										enabled : false,
+										color : 'white',
+										format : '<b style="font-size:8px">{point.percentage:.1f}%</b>',
+										style : {
+											color : (Highcharts.theme && Highcharts.theme.contrastTextColor)
+													|| 'black'
+										}
+									}
+								}
+							},
+							series : [ {
+								type : 'pie',
+								name : 'ARQUIVOS PRÉ',
+								data : [ [ 'Processados', 80 ], [ 'Erro', 10 ],
+										[ 'Não Processados', 40 ], ]
+							} ]
+						});
+
+		$('#svaPre2')
+				.highcharts(
+						{
+							colors : [
+									{
+										radialGradient : {
+											cx : 0.5,
+											cy : 0.3,
+											r : 0.7
+										},
+										stops : [
+												[ 0, '#4F81BD' ],
+												[
+														1,
+														Highcharts.Color(
+																'#4F81BD')
+																.brighten(-0.3)
+																.get('hex') ] // darken
+										]
+									},
+									{
+										radialGradient : {
+											cx : 0.5,
+											cy : 0.3,
+											r : 0.7
+										},
+										stops : [
+												[ 0, '#C0504D' ],
+												[
+														1,
+														Highcharts.Color(
+																'#C0504D')
+																.brighten(-0.3)
+																.get('hex') ] // darken
+										]
+									},
+									{
+										radialGradient : {
+											cx : 0.5,
+											cy : 0.3,
+											r : 0.7
+										},
+										stops : [
+												[ 0, '#9BBB59' ],
+												[
+														1,
+														Highcharts.Color(
+																'#9BBB59')
+																.brighten(-0.3)
+																.get('hex') ] // darken
+										]
+									},
+
+							],
+
+							chart : {
+								plotBackgroundColor : null,
+								plotBorderWidth : null,
+								plotShadow : false,
+								spacingTop : -140
+							},
+							title : {
+								text : 'Processamento BFM'
+							},
+							tooltip : {
+								pointFormat : '{series.name}: <b>{point.percentage:.1f}%</b>'
+							},
+							plotOptions : {
+								pie : {
+									allowPointSelect : true,
+									cursor : 'pointer',
+									dataLabels : {
+										distance : -30,
+										enabled : false,
+										color : 'white',
+										format : '<b style="font-size:8px">{point.percentage:.1f}%</b>',
+										style : {
+											color : (Highcharts.theme && Highcharts.theme.contrastTextColor)
+													|| 'black'
+										}
+									}
+								}
+							},
+							series : [ {
+								type : 'pie',
+								name : 'ARQUIVOS PRÉ',
+								data : [ [ 'Processados', 80 ], [ 'Erro', 10 ],
+										[ 'Não Processados', 40 ], ]
+							} ]
+						});
+
+		$('#svaPos2')
+				.highcharts(
+						{
+							colors : [
+									{
+										radialGradient : {
+											cx : 0.5,
+											cy : 0.3,
+											r : 0.7
+										},
+										stops : [
+												[ 0, '#4F81BD' ],
+												[
+														1,
+														Highcharts.Color(
+																'#4F81BD')
+																.brighten(-0.3)
+																.get('hex') ] // darken
+										]
+									},
+									{
+										radialGradient : {
+											cx : 0.5,
+											cy : 0.3,
+											r : 0.7
+										},
+										stops : [
+												[ 0, '#C0504D' ],
+												[
+														1,
+														Highcharts.Color(
+																'#C0504D')
+																.brighten(-0.3)
+																.get('hex') ] // darken
+										]
+									},
+									{
+										radialGradient : {
+											cx : 0.5,
+											cy : 0.3,
+											r : 0.7
+										},
+										stops : [
+												[ 0, '#9BBB59' ],
+												[
+														1,
+														Highcharts.Color(
+																'#9BBB59')
+																.brighten(-0.3)
+																.get('hex') ] // darken
+										]
+									},
+
+							],
+
+							chart : {
+								plotBackgroundColor : null,
+								plotBorderWidth : null,
+								plotShadow : false,
+								spacingTop : -140
+							},
+							title : {
+								text : 'Processamento BFM'
+							},
+							tooltip : {
+								pointFormat : '{series.name}: <b>{point.percentage:.1f}%</b>'
+							},
+							plotOptions : {
+								pie : {
+									allowPointSelect : true,
+									cursor : 'pointer',
+									dataLabels : {
+										distance : -30,
+										enabled : false,
+										color : 'white',
+										format : '<b style="font-size:8px">{point.percentage:.1f}%</b>',
+										style : {
+											color : (Highcharts.theme && Highcharts.theme.contrastTextColor)
+													|| 'black'
+										}
+									}
+								}
+							},
+							series : [ {
+								type : 'pie',
+								name : 'ARQUIVOS PRÉ',
+								data : [ [ 'Processados', 80 ], [ 'Erro', 10 ],
+										[ 'Não Processados', 40 ], ]
+							} ]
+						});
+
+		$('#svaFixo2')
+				.highcharts(
+						{
+							colors : [
+									{
+										radialGradient : {
+											cx : 0.5,
+											cy : 0.3,
+											r : 0.7
+										},
+										stops : [
+												[ 0, '#4F81BD' ],
+												[
+														1,
+														Highcharts.Color(
+																'#4F81BD')
+																.brighten(-0.3)
+																.get('hex') ] // darken
+										]
+									},
+									{
+										radialGradient : {
+											cx : 0.5,
+											cy : 0.3,
+											r : 0.7
+										},
+										stops : [
+												[ 0, '#C0504D' ],
+												[
+														1,
+														Highcharts.Color(
+																'#C0504D')
+																.brighten(-0.3)
+																.get('hex') ] // darken
+										]
+									},
+									{
+										radialGradient : {
+											cx : 0.5,
+											cy : 0.3,
+											r : 0.7
+										},
+										stops : [
+												[ 0, '#9BBB59' ],
+												[
+														1,
+														Highcharts.Color(
+																'#9BBB59')
+																.brighten(-0.3)
+																.get('hex') ] // darken
+										]
+									},
+
+							],
+
+							chart : {
+								plotBackgroundColor : null,
+								plotBorderWidth : null,
+								plotShadow : false,
+								spacingTop : -140
+							},
+							title : {
+								text : 'Processamento BFF'
+							},
+							tooltip : {
+								pointFormat : '{series.name}: <b>{point.percentage:.1f}%</b>'
+							},
+							plotOptions : {
+								pie : {
+									allowPointSelect : true,
+									cursor : 'pointer',
+									dataLabels : {
+										distance : -30,
+										enabled : false,
+										color : 'white',
+										format : '<b style="font-size:8px">{point.percentage:.1f}%</b>',
+										style : {
+											color : (Highcharts.theme && Highcharts.theme.contrastTextColor)
+													|| 'black'
+										}
+									}
+								}
+							},
+							series : [ {
+								type : 'pie',
+								name : 'ARQUIVOS PRÉ',
+								data : [ [ 'Processados', 80 ], [ 'Erro', 10 ],
+										[ 'Não Processados', 40 ], ]
+							} ]
+						});
+
+		//REGISTROS
+
+		$('#svaPreRe')
+				.highcharts(
+						{
+							colors : [
+									{
+										radialGradient : {
+											cx : 0.5,
+											cy : 0.3,
+											r : 0.7
+										},
+										stops : [
+												[ 0, '#4F81BD' ],
+												[
+														1,
+														Highcharts.Color(
+																'#4F81BD')
+																.brighten(-0.3)
+																.get('hex') ] // darken
+										]
+									},
+									{
+										radialGradient : {
+											cx : 0.5,
+											cy : 0.3,
+											r : 0.7
+										},
+										stops : [
+												[ 0, '#C0504D' ],
+												[
+														1,
+														Highcharts.Color(
+																'#C0504D')
+																.brighten(-0.3)
+																.get('hex') ] // darken
+										]
+									},
+									{
+										radialGradient : {
+											cx : 0.5,
+											cy : 0.3,
+											r : 0.7
+										},
+										stops : [
+												[ 0, '#9BBB59' ],
+												[
+														1,
+														Highcharts.Color(
+																'#9BBB59')
+																.brighten(-0.3)
+																.get('hex') ] // darken
+										]
+									},
+
+							],
+
+							chart : {
+								plotBackgroundColor : null,
+								plotBorderWidth : null,
+								plotShadow : false,
+								spacingTop : -140
+							},
+							title : {
+								text : 'Processamento BFM'
+							},
+							tooltip : {
+								pointFormat : '{series.name}: <b>{point.percentage:.1f}%</b>'
+							},
+							plotOptions : {
+								pie : {
+									allowPointSelect : true,
+									cursor : 'pointer',
+									dataLabels : {
+										distance : -30,
+										enabled : false,
+										color : 'white',
+										format : '<b style="font-size:8px">{point.percentage:.1f}%</b>',
+										style : {
+											color : (Highcharts.theme && Highcharts.theme.contrastTextColor)
+													|| 'black'
+										}
+									}
+								}
+							},
+							series : [ {
+								type : 'pie',
+								name : 'ARQUIVOS PRÉ',
+								data : [ [ 'Processados', 80 ], [ 'Erro', 10 ] ]
+							} ]
+						});
+
+		$('#svaPosRe')
+				.highcharts(
+						{
+							colors : [
+									{
+										radialGradient : {
+											cx : 0.5,
+											cy : 0.3,
+											r : 0.7
+										},
+										stops : [
+												[ 0, '#4F81BD' ],
+												[
+														1,
+														Highcharts.Color(
+																'#4F81BD')
+																.brighten(-0.3)
+																.get('hex') ] // darken
+										]
+									},
+									{
+										radialGradient : {
+											cx : 0.5,
+											cy : 0.3,
+											r : 0.7
+										},
+										stops : [
+												[ 0, '#C0504D' ],
+												[
+														1,
+														Highcharts.Color(
+																'#C0504D')
+																.brighten(-0.3)
+																.get('hex') ] // darken
+										]
+									},
+									{
+										radialGradient : {
+											cx : 0.5,
+											cy : 0.3,
+											r : 0.7
+										},
+										stops : [
+												[ 0, '#9BBB59' ],
+												[
+														1,
+														Highcharts.Color(
+																'#9BBB59')
+																.brighten(-0.3)
+																.get('hex') ] // darken
+										]
+									},
+
+							],
+
+							chart : {
+								plotBackgroundColor : null,
+								plotBorderWidth : null,
+								plotShadow : false,
+								spacingTop : -140
+							},
+							title : {
+								text : 'Processamento BFM'
+							},
+							tooltip : {
+								pointFormat : '{series.name}: <b>{point.percentage:.1f}%</b>'
+							},
+							plotOptions : {
+								pie : {
+									allowPointSelect : true,
+									cursor : 'pointer',
+									dataLabels : {
+										distance : -30,
+										enabled : false,
+										color : 'white',
+										format : '<b style="font-size:8px">{point.percentage:.1f}%</b>',
+										style : {
+											color : (Highcharts.theme && Highcharts.theme.contrastTextColor)
+													|| 'black'
+										}
+									}
+								}
+							},
+							series : [ {
+								type : 'pie',
+								name : 'ARQUIVOS PRÉ',
+								data : [ [ 'Processados', 80 ], [ 'Erro', 10 ] ]
+							} ]
+						});
+
+		$('#svaFixoRe')
+				.highcharts(
+						{
+							colors : [
+									{
+										radialGradient : {
+											cx : 0.5,
+											cy : 0.3,
+											r : 0.7
+										},
+										stops : [
+												[ 0, '#4F81BD' ],
+												[
+														1,
+														Highcharts.Color(
+																'#4F81BD')
+																.brighten(-0.3)
+																.get('hex') ] // darken
+										]
+									},
+									{
+										radialGradient : {
+											cx : 0.5,
+											cy : 0.3,
+											r : 0.7
+										},
+										stops : [
+												[ 0, '#C0504D' ],
+												[
+														1,
+														Highcharts.Color(
+																'#C0504D')
+																.brighten(-0.3)
+																.get('hex') ] // darken
+										]
+									},
+									{
+										radialGradient : {
+											cx : 0.5,
+											cy : 0.3,
+											r : 0.7
+										},
+										stops : [
+												[ 0, '#9BBB59' ],
+												[
+														1,
+														Highcharts.Color(
+																'#9BBB59')
+																.brighten(-0.3)
+																.get('hex') ] // darken
+										]
+									},
+
+							],
+
+							chart : {
+								plotBackgroundColor : null,
+								plotBorderWidth : null,
+								plotShadow : false,
+								spacingTop : -140
+							},
+							title : {
+								text : 'Processamento BFF'
+							},
+							tooltip : {
+								pointFormat : '{series.name}: <b>{point.percentage:.1f}%</b>'
+							},
+							plotOptions : {
+								pie : {
+									allowPointSelect : true,
+									cursor : 'pointer',
+									dataLabels : {
+										distance : -30,
+										enabled : false,
+										color : 'white',
+										format : '<b style="font-size:8px">{point.percentage:.1f}%</b>',
+										style : {
+											color : (Highcharts.theme && Highcharts.theme.contrastTextColor)
+													|| 'black'
+										}
+									}
+								}
+							},
+							series : [ {
+								type : 'pie',
+								name : 'ARQUIVOS PRÉ',
+								data : [ [ 'Processados', 80 ], [ 'Erro', 10 ] ]
+							} ]
+						});
+
+		$('#svaPreRe2')
+				.highcharts(
+						{
+							colors : [
+									{
+										radialGradient : {
+											cx : 0.5,
+											cy : 0.3,
+											r : 0.7
+										},
+										stops : [
+												[ 0, '#4F81BD' ],
+												[
+														1,
+														Highcharts.Color(
+																'#4F81BD')
+																.brighten(-0.3)
+																.get('hex') ] // darken
+										]
+									},
+									{
+										radialGradient : {
+											cx : 0.5,
+											cy : 0.3,
+											r : 0.7
+										},
+										stops : [
+												[ 0, '#C0504D' ],
+												[
+														1,
+														Highcharts.Color(
+																'#C0504D')
+																.brighten(-0.3)
+																.get('hex') ] // darken
+										]
+									},
+									{
+										radialGradient : {
+											cx : 0.5,
+											cy : 0.3,
+											r : 0.7
+										},
+										stops : [
+												[ 0, '#9BBB59' ],
+												[
+														1,
+														Highcharts.Color(
+																'#9BBB59')
+																.brighten(-0.3)
+																.get('hex') ] // darken
+										]
+									},
+
+							],
+
+							chart : {
+								plotBackgroundColor : null,
+								plotBorderWidth : null,
+								plotShadow : false,
+								spacingTop : -140
+							},
+							title : {
+								text : 'Processamento BFM'
+							},
+							tooltip : {
+								pointFormat : '{series.name}: <b>{point.percentage:.1f}%</b>'
+							},
+							plotOptions : {
+								pie : {
+									allowPointSelect : true,
+									cursor : 'pointer',
+									dataLabels : {
+										distance : -30,
+										enabled : false,
+										color : 'white',
+										format : '<b style="font-size:8px">{point.percentage:.1f}%</b>',
+										style : {
+											color : (Highcharts.theme && Highcharts.theme.contrastTextColor)
+													|| 'black'
+										}
+									}
+								}
+							},
+							series : [ {
+								type : 'pie',
+								name : 'ARQUIVOS PRÉ',
+								data : [ [ 'Processados', 80 ], [ 'Erro', 10 ] ]
+							} ]
+						});
+
+		$('#svaPosRe2')
+				.highcharts(
+						{
+							colors : [
+									{
+										radialGradient : {
+											cx : 0.5,
+											cy : 0.3,
+											r : 0.7
+										},
+										stops : [
+												[ 0, '#4F81BD' ],
+												[
+														1,
+														Highcharts.Color(
+																'#4F81BD')
+																.brighten(-0.3)
+																.get('hex') ] // darken
+										]
+									},
+									{
+										radialGradient : {
+											cx : 0.5,
+											cy : 0.3,
+											r : 0.7
+										},
+										stops : [
+												[ 0, '#C0504D' ],
+												[
+														1,
+														Highcharts.Color(
+																'#C0504D')
+																.brighten(-0.3)
+																.get('hex') ] // darken
+										]
+									},
+									{
+										radialGradient : {
+											cx : 0.5,
+											cy : 0.3,
+											r : 0.7
+										},
+										stops : [
+												[ 0, '#9BBB59' ],
+												[
+														1,
+														Highcharts.Color(
+																'#9BBB59')
+																.brighten(-0.3)
+																.get('hex') ] // darken
+										]
+									},
+
+							],
+
+							chart : {
+								plotBackgroundColor : null,
+								plotBorderWidth : null,
+								plotShadow : false,
+								spacingTop : -140
+							},
+							title : {
+								text : 'Processamento BFM'
+							},
+							tooltip : {
+								pointFormat : '{series.name}: <b>{point.percentage:.1f}%</b>'
+							},
+							plotOptions : {
+								pie : {
+									allowPointSelect : true,
+									cursor : 'pointer',
+									dataLabels : {
+										distance : -30,
+										enabled : false,
+										color : 'white',
+										format : '<b style="font-size:8px">{point.percentage:.1f}%</b>',
+										style : {
+											color : (Highcharts.theme && Highcharts.theme.contrastTextColor)
+													|| 'black'
+										}
+									}
+								}
+							},
+							series : [ {
+								type : 'pie',
+								name : 'ARQUIVOS PRÉ',
+								data : [ [ 'Processados', 80 ], [ 'Erro', 10 ] ]
+							} ]
+						});
+
+		$('#svaFixoRe2')
+				.highcharts(
+						{
+							colors : [
+									{
+										radialGradient : {
+											cx : 0.5,
+											cy : 0.3,
+											r : 0.7
+										},
+										stops : [
+												[ 0, '#4F81BD' ],
+												[
+														1,
+														Highcharts.Color(
+																'#4F81BD')
+																.brighten(-0.3)
+																.get('hex') ] // darken
+										]
+									},
+									{
+										radialGradient : {
+											cx : 0.5,
+											cy : 0.3,
+											r : 0.7
+										},
+										stops : [
+												[ 0, '#C0504D' ],
+												[
+														1,
+														Highcharts.Color(
+																'#C0504D')
+																.brighten(-0.3)
+																.get('hex') ] // darken
+										]
+									},
+									{
+										radialGradient : {
+											cx : 0.5,
+											cy : 0.3,
+											r : 0.7
+										},
+										stops : [
+												[ 0, '#9BBB59' ],
+												[
+														1,
+														Highcharts.Color(
+																'#9BBB59')
+																.brighten(-0.3)
+																.get('hex') ] // darken
+										]
+									},
+
+							],
+
+							chart : {
+								plotBackgroundColor : null,
+								plotBorderWidth : null,
+								plotShadow : false,
+								spacingTop : -140
+							},
+							title : {
+								text : 'Processamento BFF'
+							},
+							tooltip : {
+								pointFormat : '{series.name}: <b>{point.percentage:.1f}%</b>'
+							},
+							plotOptions : {
+								pie : {
+									allowPointSelect : true,
+									cursor : 'pointer',
+									dataLabels : {
+										distance : -30,
+										enabled : false,
+										color : 'white',
+										format : '<b style="font-size:8px">{point.percentage:.1f}%</b>',
+										style : {
+											color : (Highcharts.theme && Highcharts.theme.contrastTextColor)
+													|| 'black'
+										}
+									}
+								}
+							},
+							series : [ {
+								type : 'pie',
+								name : 'ARQUIVOS PRÉ',
+								data : [ [ 'Processados', 80 ], [ 'Erro', 10 ] ]
+							} ]
+						});
+	});
+
+	//REGISTROS
+	$(function() {
+		Highcharts.setOptions({
+			global : {
+				useUTC : false
+			}
+		});
+		var chart;
+		$('#svaPreTime').highcharts(
+				{
+					chart : {
+						type : 'spline',
+						animation : Highcharts.svg, // don't animate in old IE
+						marginRight : 10,
+						events : {
+							load : function() {
+
+								// set up the updating of the chart each second
+								var series = this.series[0];
+								setInterval(function() {
+									var x = (new Date()).getTime(), // current time
+									y = Math.random();
+									series.addPoint([ x, y ], true, true);
+								}, 1000);
+							}
+						}
+					},
+					title : {
+						text : 'Registros / Hora - ICFBF/BFM'
+					},
+					xAxis : {
+						type : 'datetime',
+						tickPixelInterval : 150
+					},
+					yAxis : {
+						title : {
+							text : 'Registros'
+						},
+						plotLines : [ {
+							value : 0,
+							width : 1,
+							color : '#808080'
+						} ]
+					},
+					tooltip : {
+						formatter : function() {
+							return '<b>'
+									+ this.series.name
+									+ '</b><br/>'
+									+ Highcharts.dateFormat(
+											'%Y-%m-%d %H:%M:%S', this.x)
+									+ '<br/>'
+									+ Highcharts.numberFormat(this.y, 2);
+						}
+					},
+					legend : {
+						enabled : false
+					},
+					exporting : {
+						enabled : false
+					},
+					series : [ {
+						name : 'Random data',
+						data : (function() {
+							// generate an array of random data
+							var data = [], time = (new Date()).getTime(), i;
+
+							for (i = -19; i <= 0; i++) {
+								data.push({
+									x : time + i * 1000,
+									y : Math.random()
+								});
+							}
+							return data;
+						})()
+					} ]
+				});
+	});
+
+	//REGISTROS
+	$(function() {
+		Highcharts.setOptions({
+			global : {
+				useUTC : false
+			}
+		});
+		var chart;
+		$('#bffPreTime').highcharts(
+				{
+					chart : {
+						type : 'spline',
+						animation : Highcharts.svg, // don't animate in old IE
+						marginRight : 10,
+						events : {
+							load : function() {
+
+								// set up the updating of the chart each second
+								var series = this.series[0];
+								setInterval(function() {
+									var x = (new Date()).getTime(), // current time
+									y = Math.random();
+									series.addPoint([ x, y ], true, true);
+								}, 1000);
+							}
+						}
+					},
+					title : {
+						text : 'Registros / Hora - ICFBF/BFF '
+					},
+					xAxis : {
+						type : 'datetime',
+						tickPixelInterval : 150
+					},
+					yAxis : {
+						title : {
+							text : 'Registros'
+						},
+						plotLines : [ {
+							value : 0,
+							width : 1,
+							color : '#808080'
+						} ]
+					},
+					tooltip : {
+						formatter : function() {
+							return '<b>'
+									+ this.series.name
+									+ '</b><br/>'
+									+ Highcharts.dateFormat(
+											'%Y-%m-%d %H:%M:%S', this.x)
+									+ '<br/>'
+									+ Highcharts.numberFormat(this.y, 2);
+						}
+					},
+					legend : {
+						enabled : false
+					},
+					exporting : {
+						enabled : false
+					},
+					series : [ {
+						name : 'Random data',
+						data : (function() {
+							// generate an array of random data
+							var data = [], time = (new Date()).getTime(), i;
+
+							for (i = -19; i <= 0; i++) {
+								data.push({
+									x : time + i * 1000,
+									y : Math.random()
+								});
+							}
+							return data;
+						})()
+					} ]
+				});
+	});
+</script>
+
+<style>
+.highcharts-title {
+	font-size: 11px !important
+}
+
+.pizza text[text-anchor] {
+	display: none !important
+}
+
+.pizza text.highcharts-title {
+	display: none !important
+}
+
+text[text-anchor="end"] {
+	visibility: hidden !important
+}
+
+g text[text-anchor="end"] {
+	visibility: visible !important
+}
+</style>

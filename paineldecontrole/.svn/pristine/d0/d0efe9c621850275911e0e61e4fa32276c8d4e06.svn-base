@@ -1,0 +1,8 @@
+.btnGrid{background:#F1AE00; color:#fff; padding:1px 5px; border-radius:3px; margin:0 2px}
+.consultar{ margin-left:5px}
+.consultar:before{ content: "\f002"}
+.imprimir:before{ content: "\f02f"}
+.exportar:before{ content: "\f08e"}
+
+
+.btnPadrao i{ margin:0;}

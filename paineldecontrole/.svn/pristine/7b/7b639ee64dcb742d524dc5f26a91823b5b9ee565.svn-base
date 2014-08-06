@@ -1,0 +1,78 @@
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="br.com.controller.MonitoramentoController"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib uri="http://www.opensymphony.com/sitemesh/decorator"
+	prefix="dec"%>
+<%@ taglib uri="http://www.springframework.org/security/tags"
+	prefix="sec"%>
+<%@ taglib prefix="ADNTags" uri="ADNFwTaglib"%>
+<%@page import="java.util.*"%>
+<%@ page language="java" contentType="text/html"%>
+
+<div class="ajax lista">
+	<div id="barraTopo">
+		<div class="migalha">
+			<span>Lote X Arquivos</span>
+		</div>
+
+		<div class="filtro">
+
+			<div class="conteudoFiltro" style="width: 233px">
+				<span class="fecharFiltro" onclick="escondeFiltro(this)"></span>
+				<fieldset>
+					<legend>Período</legend>
+					<label class="campoData"> <input id="dt_ini" type="text"
+						style="width: 86px" /> </label> <label><span>Até</span> </label> <label
+						class="campoData"> <input id="dt_fin" type="text"
+						style="width: 86px" /> </label>
+				</fieldset>
+
+				<div class="limpa"></div>
+				<label> <span>Arquivo Recebido</span> <input type="text" id="arquivorecebido"
+					style="width: 220px" /> </label>
+				<div class="limpa"></div>
+				<div style="float: right; padding: 5px 0 0 0">
+					<a class="btnPadrao" href="javascript:void(0)"  onclick="fnPesquisar('#dadoslista_lote_arquivoprocessado','lote_arquivoprocessado','Dados não existentes!');"><i
+						class="consultar"> Pesquisar</i> </a>
+				</div>
+				<div class="limpa"></div>
+			</div>
+
+			<i class="lupa" onclick="mostraFiltro(this)"></i>
+		</div>
+
+	</div>
+
+
+	<div class="boxGrid">
+		<table border="0" cellpadding="0" cellspacing="0" width="100%"
+			class="tabelaSistema" id="dadoslista_lote_arquivoprocessado"></table>
+
+	</div>
+</div>
+<div class="ajax crudtela"></div>
+
+<script>
+	$(function() {
+		alternaLinha();
+		montaCombo("#terminal");
+	})
+
+	function getChave() {
+
+		var Retorno = '';
+
+		if ($("#dt_ini").val() != "")
+			Retorno = AddSeparador(Retorno, ' {name:"dt_ini", value:"'
+					+ $("#dt_ini").val() + '"}', ',');
+		if ($("#dt_fin").val() != "")
+			Retorno = AddSeparador(Retorno, ' {name:"dt_fin", value:"'
+					+ $("#dt_fin").val() + '"}', ',');
+		if ($("#arquivorecebido").val() != "")
+			Retorno = AddSeparador(Retorno, ' {name:"arquivo_recebido", value:"'
+					+ $("#arquivorecebido").val() + '"}', ',');
+
+		return eval("[" + Retorno + "]");
+	}
+</script>

@@ -1,0 +1,14 @@
+
+.tablescroll_wrapper
+{
+	height: 320px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    width: 980px;
+}
+
+.tablescroll_head
+{
+	overflow-x: hidden;
+    overflow-y: auto;
+}

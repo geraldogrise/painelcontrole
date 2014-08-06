@@ -1,0 +1,87 @@
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="br.com.controller.MonitoramentoController"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib uri="http://www.opensymphony.com/sitemesh/decorator"	prefix="dec"%>
+<%@ taglib uri="http://www.springframework.org/security/tags"	prefix="sec"%>
+<%@ taglib prefix="ADNTags" uri="ADNFwTaglib"%>
+<%@page import="java.util.*"%>
+<%@ page language="java" contentType="text/html"%>
+
+<div class="ajax lista">
+	<div id="barraTopo">
+		<div class="migalha">
+			<span>Acompanhamento da fila entre o BFM e ICFBF</span>
+		</div>
+	
+		<div class="filtro">
+	
+			<div class="conteudoFiltro" style="width: 330px">
+				<span class="fecharFiltro" onclick="escondeFiltro(this)"></span>
+				<fieldset>
+						<legend>Período</legend>
+						<label class="campoData"> <input id="dt_ini" type="text"
+							style="width: 86px" /> </label> <label><span>Até</span> </label> <label
+							class="campoData"> <input id="dt_fin" type="text"
+							style="width: 86px" /> </label>
+					</fieldset>
+	
+				<a class="btnPadrao" href="javascript:void(0)"
+						onclick="fnPesquisar('#dadoslista_filabfmicfbf','filabfmicfbf','Dados não existentes!');"><i
+						class="consultar"> Pesquisar</i> </a>
+			</div>
+	
+			<i class="lupa" onclick="mostraFiltro(this)"></i>
+		</div>
+	
+	</div>
+	
+	
+	<div class="boxGrid">
+		<table border="0" cellpadding="0" cellspacing="0" width="100%"
+			class="tabelaSistema" id="dadoslista_filabfmicfbf">
+		</table>
+	
+	</div>
+</div>
+<div class="ajax crudtela"></div>
+<script>
+
+
+	var _RetornoOutrasChaves;
+
+	$(function() {
+		alternaLinha();
+		montaCombo("#terminal");
+	})
+
+	function getChave() {
+
+		var Retorno = '';
+
+		if ($("#dt_ini").val() != "")
+			Retorno = AddSeparador(Retorno, ' {name:"dt_ini", value:"'
+					+ $("#dt_ini").val() + '"}', ',');
+		if ($("#dt_fin").val() != "")
+			Retorno = AddSeparador(Retorno, ' {name:"dt_fin", value:"'
+					+ $("#dt_fin").val() + '"}', ',');
+
+		return eval("[" + Retorno + "]");
+	}
+	
+	
+	function setOutrasChavesIndex(_nomelote) {
+		_RetornoOutrasChaves = "";
+		if (_nomelote != "")
+			_RetornoOutrasChaves = AddSeparador(_RetornoOutrasChaves,
+				' {name:"nomelote", value:"' + _nomelote + '"}', ',');
+	
+	}
+	
+	function getChaveCrud() {
+
+		return eval("[" + _RetornoOutrasChaves + "]");
+
+	}
+
+</script>

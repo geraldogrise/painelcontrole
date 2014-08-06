@@ -1,0 +1,577 @@
+@charset "utf-8";
+* {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	outline:none;
+	border:none;
+}
+.limpa {
+	clear: both
+}
+.quebraEsq {
+	float: left
+}
+body {
+	margin: 0 auto;
+	background: #DCE0E2;
+	font-family: Verdana, Geneva, sans-serif;
+	color: #646568;
+	overflow-x:hidden;
+}
+#topo {
+	width: 100%;
+	margin: 0 auto;
+	background: url(../../imagem/images/img_topo_bg.png) repeat-x top;
+	height: 101px;
+	position: fixed;
+	z-index: 999;
+	top: 0;
+	left: 0
+}
+#topoDentro {
+	width: 982px;
+	margin: 0 auto;
+	background: url(../../imagem/images/img_topo.png) no-repeat left top;
+	height: 65px;
+	clear: both
+}
+#logoPrincipal {
+	float: left
+}
+#logoPrincipal a {
+	display: block;
+	background: url(../../imagem/images/logoPrinc.png) no-repeat left top;
+	height: 65px;
+	width: 319px
+}
+.userTipo {
+	float: left;
+	font-size: 10px;
+	color: #333;
+	padding: 10px 0 0 41px
+}
+.userTipo span {
+	float: left;
+	padding: 0 20px 0 0
+}
+.userTipo strong {
+	display: block;
+}
+#btnsTopo {
+	float: right;
+	width: 210px;
+	padding: 10px 0 0 0
+}
+#btnsTopo a {
+	float: left;
+	background-position: left top;
+	background-repeat: no-repeat;
+	width: 31px;
+	height: 30px
+}
+#btnsTopo a:hover {
+	background-position: left bottom
+}
+#btnsTopo a#btnTopoHome {
+	background-image: url(../../imagem/images/bt_home.png);
+}
+#btnsTopo a#btnTopoHelp {
+	background-image: url(../../imagem/images/bt_ajuda.png);
+	margin: 0 22px 0 22px
+}
+#btnsTopo a#btnTopoLogout {
+	background-image: url(../../imagem/images/bt_logoff.png);
+}
+#menuTopo {
+	background: url(../../imagem/images/img_area_top_bg_menu_01.png) repeat-x center top;
+	height: 36px;
+	width: 100%;
+	clear: both
+}
+ul#bgMenuTopo {
+	background: url(../../imagem/images/img_area_top_bg_menu.png) no-repeat center top;
+	height: 30px;
+	width: 962px;
+	margin: 0 auto;
+	padding: 6px 0 0 0
+}
+ul#bgMenuTopo li {
+	float: left;
+	background: url(../../imagem/images/img_area_top_bg_menu_sep.png) no-repeat right top;
+	height: 29px;
+	padding-right: 2px;
+	position: relative;
+	width:237px;
+}
+ul#bgMenuTopo li.semBg {
+	background: none
+}
+ul#bgMenuTopo li a {
+	display: block;
+	font-size: 11px;
+	color: #646568;
+	font-weight: bold;
+	text-decoration: none;
+	margin: 0 auto; text-align:center;
+	padding:8px 0 7px 0;
+}
+ul#bgMenuTopo li a.marcado {
+	background: url(../../imagem/images/bgHoverMenuTopo.png) repeat-x top;
+}
+ul#bgMenuTopo li a#menuCadastro {
+
+}
+ul#bgMenuTopo li a#menuCadastro:hover, ul#bgMenuTopo li a#menuCadastro.marcado {
+	background: url(../../imagem/images/menumenuTabelaHover.png) no-repeat left top
+}
+ul#bgMenuTopo li a#menuOperacoes:hover, ul#bgMenuTopo li a#menuOperacoes.marcado {
+	background: url(../../imagem/images/menuRelatoriosHover.png) no-repeat right top;
+}
+ul.sub_menu {
+	display: none;
+	margin-top: -1px;
+}
+ul#bgMenuTopo li ul.sub_menu li {
+	background: none;
+	display: block;
+	float: none;
+	border: solid 1px #ccc;
+	border-top: none;
+	height: auto;
+	padding: 0;
+	background: #fff;
+	width:auto;
+}
+ul#bgMenuTopo li ul.sub_menu li a {
+	color: #777;
+	font-weight: normal;
+	padding: 7px 5px;
+	text-transform: uppercase;
+	font-size: 10px;
+	text-align:left;
+}
+ul#bgMenuTopo li ul.sub_menu li a:hover {
+	background: url(../../imagem/images/bgHoverSubMenuTopo.png) repeat-x top;
+	color: #333
+}
+.subSubMenu {
+	float: right;
+	position: relative;
+	top: -29px;
+	top/*\**/: -27px\9;
+	border-top: solid 1px #ccc
+}
+#geral {
+	clear: both;
+	width: 980px;
+	margin: 0 auto;
+	padding-top: 101px;
+	background: #fff;
+	border-right: solid 1px #b9bcbe;
+	border-left: solid 1px #b9bcbe;
+}
+#bannerHome {
+	background: url(../../imagem/images/img_area.png) no-repeat center top;
+	height: 415px;
+	width: 100%
+}
+.rodape {
+	background: url(../../imagem/images/img_area_down.png) no-repeat center bottom;
+	clear: both;
+	width: 982px;
+	margin: 0 auto;
+	height: 13px
+}
+.tituloPagina {
+	font-size: 13px;
+	background: url(../../imagem/images/img_lista_separador_top.png) repeat-x bottom;
+	font-weight: lighter;
+	text-transform: uppercase;
+	padding: 15px 10px
+}
+.areaCampos {
+	clear: both;
+	padding: 0 6px 10px 6px
+}
+label {
+	cursor: default;
+	display: inline-block;
+	font-size: 10px;
+	font-weight: bold;
+	margin: 0;
+	padding: 8px 0 0;
+	vertical-align: bottom;
+}
+label span {
+	display: block;
+	padding: 0 0 2px;
+}
+input[type="text"] {
+	border: 1px solid #CDCDCD;
+	color: #646568;
+	font-size: 12px;
+	height: 14px;
+	padding: 5px 2px;
+	border-radius:3px;
+}
+input{
+	text-transform: uppercase;	
+}
+textarea{
+	text-transform: uppercase;	
+}
+*[readonly="readonly"],*[disabled="disabled"]{
+background-color: #F7F7F7;
+border: 1px solid #DBDBDB!important;
+color:#000!important;
+}
+
+textarea{
+	border: 1px solid #CDCDCD;
+	color: #646568;
+	font-size: 12px;
+	padding: 5px 2px;
+	border-radius:3px;
+	resize:none;
+	overflow:auto;	
+	
+	}
+select {
+	border: 1px solid #CDCDCD;
+	color: #646568;
+	font: 12px Verdana, Arial, Helvetica, sans-serif;
+	height: 26px;
+	padding: 4px;
+	border-radius:3px;
+}
+fieldset {
+	border: 1px solid #AAAAAA;
+	display: inline-block;
+	margin: 0;
+	padding: 0 7px 7px;
+	vertical-align: bottom;
+	border-radius:3px;
+}
+fieldset legend {
+	display: block;
+	font: 12px/20px "Trebuchet MS", Arial, Helvetica, sans-serif;
+}
+
+fieldset.radio label{ padding:0}
+
+fieldset.radio span{ display:inline-block; vertical-align:top; padding:0}
+
+.campoData {
+	width: 80px
+}
+.btData, .ui-datepicker-trigger {
+	display: inline-block!important;
+	vertical-align: bottom!important; 
+	margin:0 -4px!important;
+}
+.bt_padrao_100 {
+	background: url("../../imagem/images/bt_padrao_bg.png") no-repeat scroll left top transparent;
+	display: inline-block;
+	height: 26px;
+	vertical-align: bottom;
+	width: 100px;
+}
+.bt_padrao_100 a {
+	color: #646568;
+	display: block;
+	font: bold 11px "Trebuchet MS", Arial, Helvetica, sans-serif;
+	padding: 6px 0 6px 8px;
+	text-decoration: none;
+	text-transform: uppercase;
+}
+.bt_padrao_100:hover {
+	background-position: left bottom;
+}
+.bt_padrao_100 img {
+	float: left;
+	margin: 3px 8px 0 0;
+}
+.areaGrid {
+	clear: both;
+	padding: 7px 0 0 0;
+	background: url(../../imagem/images/img_lista_separador_top.png) repeat-x top;
+}
+.scrollTabela {
+	overflow: auto;
+	clear: both
+}
+table.tabelaSistema {
+	text-align: left;
+	border-collapse: collapse
+}
+table.tabelaSistema tr {
+	background: #fcfcfc
+}
+table.tabelaSistema th {
+	background: url(../../imagem/images/bg_lista.png) repeat-x top;
+	font-size: 11px;
+	height: 30px;
+	border: solid 1px #fff;
+	padding: 0 2px;
+}
+table.tabelaSistema td {
+	font-size: 11px;
+	border: solid 1px #fff;
+	padding: 5px 2px;
+}
+table.tabelaSistema tr.linhaEscura {
+	background: #F2F2F2
+}
+
+.paginacao{ clear:both; font-size:11px; text-align:left; padding:13px 5px 0 5px; background:url(../../imagem/images/img_lista_separador_down.png) repeat-x center top}
+
+.paginacao span{border-right:solid 1px #ccc; padding:0 5px}
+
+.paginacao span a{ color:#646568;text-decoration:underline }
+
+.paginacao span a:hover{ text-decoration:none;}
+
+.paginacao span a.activo{ text-decoration:none; color:#be7802; font-weight:bold}
+
+.paginacao input[type="button"]{ font-size:15px; color:#646568; background:none; border:none; cursor:pointer;border-right:solid 1px #ccc; padding:0 3px}
+
+.popup{ position:relative; margin:0 auto;}
+
+.popupDentro{min-height:90px;min-width:200px; border:solid 1px #ccc; background:#fff;}
+
+.tituloPopup{background: url(../../imagem/images/img_area_top_bg_menu_01.png) repeat-x center bottom; height:30px; width:100%; cursor:default}
+
+.tituloPopup span{ float:left; font-size:10px; color:#fff; font-weight:bold; padding:7px 30px 0 10px; text-transform:uppercase;}
+
+.btnPagina{ float:right; text-align:left;}
+
+
+.areaAba {
+	clear: both;
+	border-bottom:1px solid #B9BCBE;
+	padding:0 0 0 5px;	
+}
+.bordaEsqAba {
+	float: left;
+	background: url(../../imagem/images/bt_aba.png) no-repeat left top;
+	height: 27px;
+	padding-left: 5px;
+	min-width: 110px;
+	overflow-y: hidden;
+	margin-bottom:-1px;
+}
+.bordaDirAba {
+	background: url(../../imagem/images/bt_aba.png) no-repeat right -212px;
+	height: 27px;
+	clear: both;
+	padding-right: 2px
+}
+.bordaEsqAba a {
+	text-decoration: none;
+	color: #fff;
+	font-size: 10px;
+	font-weight: bold;
+	display: block;
+	background: url(../../imagem/images/bt_aba.png) repeat-x left -110px;
+	padding: 8px 15px;
+	text-align: center
+}
+.bordaEsqAba.ativo {
+	background-position: left -50px;
+}
+.bordaEsqAba.ativo .bordaDirAba {
+	background-position: right -272px;
+
+}
+.bordaEsqAba.ativo a {
+	background-position: left -160px;
+	color: #666;
+}
+.perfis {
+	display: inline-block;
+	vertical-align: top;
+	width: 183px;
+	border: solid 1px #dfdfdf;
+	border-radius: 2px;
+	font: bold 11px Tahoma, Geneva, sans-serif;
+	background-color: #F5F5F5;
+	background-image: -moz-linear-gradient(center top, #F9F9F9, #F5F5F5);
+	margin: 0;
+}
+.nomeperfil {
+	clear: both;
+	border-bottom: solid 1px #dfdfdf;
+	color: #646568;
+	text-shadow: 1px 1px 0 #FFFFFF;
+	background-color: #F1F1F1;
+	background-image: -moz-linear-gradient(center top, #F9F9F9, #ECECEC);
+	height: 23px;
+}
+.nomeperfil strong {
+	float: left;
+	padding: 5px;
+}
+.nomeperfil span {
+	float: right;
+	background: url(../../imagem/images/setasSubGrids.png) no-repeat center -6px;
+	height: 23px;
+	width: 15px;
+	cursor: pointer;
+}
+.perfis label {
+	display: block;
+	font-weight: normal;
+	padding: 2px 5px;
+	height: 13px
+}
+.perfis.aberto .nomeperfil span {
+	background: url(../../imagem/images/setasSubGrids.png) no-repeat center 10px;
+}
+.perfis label span, .perfis label checkbox {
+	display: inline-block;
+	vertical-align: top;
+}
+.perfis label span {
+	padding-left: 5px;
+}
+.agrupaPerfil {
+	display: block;
+	clear: both;
+	padding: 0 0 7px 7px
+}
+.agrupaPerfil legend {
+	padding: 11px 10px 7px 10px;
+	background: url(../../imagem/images/setasSubGrids.png) no-repeat center 8px;
+	display: block;
+	cursor: pointer;
+}
+.agrupaPerfil.fechado legend {
+	background: url(../../imagem/images/setasSubGrids.png) no-repeat center -6px;
+}
+.agrupaPerfil.fechado .perfis {
+	display: none
+}
+.quantSistemas {
+	font-size: 9px;
+	text-align: center;
+	display: none;
+	font-style: italic;
+}
+.agrupaPerfil.fechado .quantSistemas {
+	display: block;
+}
+.setaGridFechar {
+	background: url(../../imagem/images/mais_menos.png) no-repeat center -11px;
+	display: block;
+	margin: 0 auto;
+	cursor: pointer;
+	height: 28px;
+	width: 12px;
+}
+.areaGrid.fechado .scrollTabela {
+	display: none;
+}
+.areaGrid.fechado .setaGridFechar {
+	background-position: center 11px
+}
+
+
+#localdasmensagens {
+	position: absolute;
+	z-index: 999999;
+	right: 5px
+}
+
+.msgValidacao {
+	margin: 0 0 5px 0;
+	font-size: 11px;
+	text-align: left;
+	padding: 10px 10px 10px 42px;
+	min-height: 27px;
+	width: 330px;
+}
+
+.msgValidacao span{position:absolute;z-index:99;right:3px;top:-1px;font-size:12px;color: #000;cursor: pointer;}
+
+.msgValidacao  .conteudoMsg{padding: 0 5px 0 0}
+
+.msgAlerta {
+	border: 1px solid #e6c555;
+	color: #9e660d;
+	background: url(../../imagem/images/icn-note.png) no-repeat 10px 8px #FDEBAE;
+}
+
+.msgSucesso {
+	background: url(../../imagem/images/icn-sucesso.png) no-repeat 10px 10px #dee3ab;
+	border: 1px solid #a3c159;
+	color: #5e6f33;
+	font-weight: bold;
+}
+.msgErro {
+	background: url(../../imagem/images/icn-block.png) no-repeat 10px 10px #ffcccc;
+	border: 1px solid #ff9999;
+	color:#c31b00;
+	font-weight: bold;
+}
+
+
+.autocomplete-suggestions {
+
+	max-height:200px;
+	overflow: auto;
+
+}
+.autocomplete-suggestion {
+	border: solid 1px #ccc;
+	border-top: none;
+	height: auto;
+	padding: 0;
+	background: #fff;
+	color: #777;
+	font-weight: normal;
+	padding: 7px 5px;
+	text-transform: uppercase;
+	font-size: 10px;
+	cursor:default
+}
+.autocomplete-selected {
+	background: url(../../imagem/images/bgHoverSubMenuTopo.png) repeat-x top #fff;
+}
+.autocomplete-suggestions strong {
+	font-weight: bold;
+	color: #555;
+}
+.buscaInput{ position:absolute; z-index:99; right:3px; top:27px; cursor:pointer}
+
+.bgPreload {
+	background: #fff;
+	opacity: 0.3;
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	z-index: 99999998
+}
+.imgPreload {
+	background: url(../../imagem/images/ajax.gif) no-repeat center;
+	position: fixed;
+	width: 100%;
+	height: 50px;
+	z-index: 99999999;
+	top: 50%;
+
+}
+
+.imgPreload span{ 
+	display:block; 
+	text-align: center;
+	font-size: 11px;
+	padding:33px 0 0 0;
+	color:#aaa;
+	}
+	
+table.tabelaSistema tr.trNova{
+	font-size:11px; color:#fff;
+	background: #6BBA70; 
+}
+	

@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="rel_analitico_contabilizacao" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="pcint_lanc" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="pint_cd" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="pempresa" class="java.lang.String"/>
+	<parameter name="pperiodo" class="java.lang.String"/>
+	<queryString language="plsql">
+		<![CDATA[select cint_lanc,
+                  lanc_nodocum,
+                    emp_cd,
+                    lote_cd,
+                    int_cd,
+                    int_doc,
+                    int_dtdoc,
+                    int_noseq,
+                    int_tp,
+                    lanc_empctb,
+                    lanc_filctb,
+                    lanc_natureza,
+                    lanc_conta,
+                    lanc_subconta,
+                    lanc_ccusto1,
+                    lanc_ccusto2,
+                    lanc_dt1,
+                    lanc_dt2,
+                    lanc_tpdocum,
+                    lanc_cdhistpad,
+                    lanc_dchistcomp,
+                    lanc_qt,
+                    lanc_vl1,
+                    lanc_vl2,
+                    lanc_vl3,
+                    lanc_vl4,
+                    lanc_cdlivre,
+                    lanc_idimagem,
+                    lanc_estorno,
+                    lanc_partida_dobrada
+            from ctb_lanc
+where cint_lanc = rpad($P{pcint_lanc}, 10)
+          and int_cd    = rpad($P{pint_cd}, 4)]]>
+	</queryString>
+	<field name="CINT_LANC" class="java.lang.String"/>
+	<field name="LANC_NODOCUM" class="java.lang.String"/>
+	<field name="EMP_CD" class="java.lang.String"/>
+	<field name="LOTE_CD" class="java.lang.String"/>
+	<field name="INT_CD" class="java.lang.String"/>
+	<field name="INT_DOC" class="java.lang.String"/>
+	<field name="INT_DTDOC" class="java.sql.Timestamp"/>
+	<field name="INT_NOSEQ" class="java.math.BigDecimal"/>
+	<field name="INT_TP" class="java.lang.String"/>
+	<field name="LANC_EMPCTB" class="java.lang.String"/>
+	<field name="LANC_FILCTB" class="java.lang.String"/>
+	<field name="LANC_NATUREZA" class="java.lang.String"/>
+	<field name="LANC_CONTA" class="java.lang.String"/>
+	<field name="LANC_SUBCONTA" class="java.lang.String"/>
+	<field name="LANC_CCUSTO1" class="java.lang.String"/>
+	<field name="LANC_CCUSTO2" class="java.lang.String"/>
+	<field name="LANC_DT1" class="java.sql.Timestamp"/>
+	<field name="LANC_DT2" class="java.sql.Timestamp"/>
+	<field name="LANC_TPDOCUM" class="java.lang.String"/>
+	<field name="LANC_CDHISTPAD" class="java.lang.String"/>
+	<field name="LANC_DCHISTCOMP" class="java.lang.String"/>
+	<field name="LANC_QT" class="java.math.BigDecimal"/>
+	<field name="LANC_VL1" class="java.math.BigDecimal"/>
+	<field name="LANC_VL2" class="java.math.BigDecimal"/>
+	<field name="LANC_VL3" class="java.math.BigDecimal"/>
+	<field name="LANC_VL4" class="java.math.BigDecimal"/>
+	<field name="LANC_CDLIVRE" class="java.lang.String"/>
+	<field name="LANC_IDIMAGEM" class="java.lang.String"/>
+	<field name="LANC_ESTORNO" class="java.lang.String"/>
+	<field name="LANC_PARTIDA_DOBRADA" class="java.math.BigDecimal"/>
+	<variable name="cenCusto1" class="java.lang.String" resetType="None">
+		<variableExpression><![CDATA[($F{LANC_CCUSTO1} == "000000") ? " " : $F{LANC_CCUSTO1}]]></variableExpression>
+	</variable>
+	<variable name="cenCusto2" class="java.lang.String" resetType="None">
+		<variableExpression><![CDATA[($F{LANC_CCUSTO2} == "000000") ? " " : $F{LANC_CCUSTO2}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="74" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="1" width="802" height="26" forecolor="#660066"/>
+				<textElement textAlignment="Center">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Relatório Analítico de Contabilização [SCR]]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="6" y="52" width="59" height="20" forecolor="#0000CC"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Empresa:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="65" y="52" width="366" height="20" forecolor="#3300CC"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{pempresa}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="241" y="27" width="324" height="20" forecolor="#660066"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{pperiodo}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="22" splitType="Stretch">
+			<staticText>
+				<reportElement x="7" y="0" width="59" height="20" forecolor="#0000CC"/>
+				<textElement verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DATA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="66" y="0" width="29" height="20" forecolor="#0000CC"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[C/D]]></text>
+			</staticText>
+			<line>
+				<reportElement x="6" y="1" width="788" height="1"/>
+			</line>
+			<line>
+				<reportElement x="6" y="21" width="788" height="1"/>
+			</line>
+			<staticText>
+				<reportElement x="95" y="0" width="64" height="20" forecolor="#0000CC"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[C. CONTÁBIL]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="159" y="0" width="31" height="20" forecolor="#0000CC"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CR1]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="259" y="0" width="26" height="20" forecolor="#0000CC"/>
+				<textElement verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CR2]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="359" y="0" width="72" height="20" forecolor="#0000CC"/>
+				<textElement verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DOCUMENTO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="431" y="0" width="60" height="20" forecolor="#0000CC"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[VALOR]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="499" y="0" width="55" height="20" forecolor="#0000CC"/>
+				<textElement verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[HISTÓRICO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="689" y="0" width="57" height="20" forecolor="#0000CC"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[LOTE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="747" y="0" width="49" height="20" forecolor="#0000CC"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[EMP.CTB]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="21" splitType="Stretch">
+			<textField pattern="dd/MM/yyyy" isBlankWhenNull="true">
+				<reportElement x="7" y="0" width="59" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{LANC_DT1}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="66" y="0" width="29" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{LANC_NATUREZA}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="95" y="0" width="64" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{LANC_CONTA}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="159" y="0" width="100" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{cenCusto1}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="359" y="0" width="72" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{LANC_NODOCUM}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00" isBlankWhenNull="true">
+				<reportElement x="431" y="0" width="60" height="20"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{LANC_VL1}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="499" y="0" width="190" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{LANC_DCHISTCOMP}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="689" y="0" width="57" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{LOTE_CD}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="747" y="0" width="49" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{LANC_EMPCTB}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="259" y="0" width="100" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{cenCusto2}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch">
+			<textField>
+				<reportElement x="696" y="24" width="75" height="20"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA["Página "+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="771" y="24" width="24" height="20"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

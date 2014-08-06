@@ -1,0 +1,51 @@
+BODY {
+	PADDING-BOTTOM: 1em; PADDING-LEFT: 1em; PADDING-RIGHT: 1em; FONT: 85% Verdana, Arial, sans-serif; PADDING-TOP: 1em
+}
+H1 {
+	COLOR: #339
+}
+H2 {
+	COLOR: #339
+}
+H3 {
+	COLOR: #339
+}
+H1 {
+	MARGIN: 0px 0px 1em; FONT-SIZE: 130%
+}
+H2 {
+	MARGIN: 0.75em 0px 0.5em; FONT-SIZE: 110%
+}
+H3 {
+	MARGIN: 0.5em 0px 0.25em; FONT-SIZE: 100%
+}
+P {
+	MARGIN: 0.35em 0px
+}
+OL {
+	MARGIN-TOP: 0.25em; MARGIN-BOTTOM: 0.25em
+}
+UL {
+	MARGIN-TOP: 0.25em; MARGIN-BOTTOM: 0.25em
+}
+LI {
+	MARGIN-TOP: 0.25em; MARGIN-BOTTOM: 0.25em
+}
+PRE {
+	MARGIN: 0.75em; FONT: 90% Courier New, monospace; WHITE-SPACE: pre; COLOR: #060
+}
+KBD {
+	FONT: 90% Courier New, monospace; COLOR: #060
+}
+CODE {
+	FONT: 100% Courier New, monospace; COLOR: #050
+}
+EM {
+	COLOR: #833; FONT-WEIGHT: bold
+}
+DT {
+	MARGIN: 0.5em 0px 0.25em; COLOR: #336; FONT-WEIGHT: bold
+}
+DD {
+	MARGIN: 0.25em 2em
+}

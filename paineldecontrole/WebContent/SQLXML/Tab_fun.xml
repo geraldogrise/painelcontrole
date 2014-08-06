@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<querys>
+  <query name="selectFiltro">
+      <![CDATA[
+         select
+                fun_cd,
+                fun_nm,
+                fun_nmguerra,
+                fun_openid,
+                nvl(decode(RTRIM(fun_situacao), 'A', 'ATIVO', 'I', 'INATIVO', '', 'ATIVO'), 'ATIVO') as fun_situacao
+        from TAB_FUN
+	     where 1 = 1
+	   		    <fwp name="fun_cd" excludenull="S"  >and fun_cd = :fun_cd</fwp>
+			    <fwp name="fun_nm" excludenull="S" >and fun_nm like '%' || :fun_nm || '%' </fwp>
+			    <fwp name="fun_nmguerra" excludenull="S" >and fun_nmguerra like '%' || :fun_nmguerra || '%' </fwp>
+			    <fwp name="fun_situacao" excludenull="S"  >and nvl(rtrim(fun_situacao), 'A') = RTRIM(:fun_situacao)</fwp>
+			    <fwp name="fun_openid" excludenull="S"  >and UPPER(fun_openid) = UPPER(:fun_openid)</fwp>
+		order by fun_nmguerra
+	  ]]>
+    </query>
+
+  <query name="selectById">
+    <![CDATA[
+          select
+	         	 fun_cd,
+	             fun_nm,
+	             fun_nmguerra,
+	             fun_situacao,
+	             fun_openid,
+	             fun_email
+          from 
+          		 TAB_FUN
+          where 1 = 1
+   		  		 <fwp name="fun_cd" excludenull="N"> and fun_cd = RPAD(:fun_cd, 3)</fwp>
+   	]]>
+  </query>
+
+  <query name="selectCombo">
+    <![CDATA[
+          select
+	         	 fun_cd,
+	             fun_nm
+          from 
+          		 TAB_FUN
+          where 1 = 1
+   		  		 <fwp name="fun_cd" excludenull="N"> and fun_cd = :fun_cd</fwp>
+   	]]>
+  </query>
+
+  <query name="deleteById">
+    <![CDATA[
+          delete from
+          	  TAB_FUN
+          where 
+			  <fwp name="fun_cd" excludenull="N"  > fun_cd = :fun_cd</fwp>
+     ]]>
+  </query>
+  
+  <query name="permissoesById">
+    <![CDATA[
+  
+   select funci.TXNOMESEGURANCA || '_' || objt.TXNOMESEGURANCA as PERMISSAO, funci.TXNOMESEGURANCA AS PERMISSAOPAI
+       from funcionalidade funci
+       left join funcionalidade_objeto objt on (funci.cdfuncionalidade = objt.cdfuncionalidade)
+       inner join perfil_objeto        peob on (objt.cdobjeto = peob.cdobjeto ) 
+       inner join tab_fun_perfil       tfpe on (peob.cdperfil = tfpe.cdperfil ) 
+       where 1 = 1 
+         <fwp name="fun_cd" excludenull="N"  > and tfpe.FUN_CD = trim(:fun_cd)</fwp>
+    		 order by funci.txfuncionalidade, objt.txobjeto
+    		 
+     ]]>
+  </query>
+  
+  <query name="deletePerfil">
+    <![CDATA[ 
+          delete from TAB_FUN_PERFIL 
+          where 
+			  <fwp name="fun_cd" excludenull="N"  > fun_cd = :fun_cd</fwp>
+   	]]>
+  </query>
+  
+  <query name="definePerfil">
+    <![CDATA[ 
+          insert into TAB_FUN_PERFIL (	fun_cd, 
+          								cdperfil) 
+          values(	<fwp name="fun_cd" excludenull="N"> :fun_cd</fwp>
+   		  		 	<fwp name="cdperfil" excludenull="N">, :cdperfil</fwp>
+   		  		 	) 
+   	]]>
+  </query>
+    		 
+  
+</querys>

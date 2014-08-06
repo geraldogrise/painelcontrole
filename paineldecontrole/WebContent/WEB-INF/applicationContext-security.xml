@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns:beans="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns="http://www.springframework.org/schema/security"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+ http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.1.xsd" >
+
+    <global-method-security  proxy-target-class="true" pre-post-annotations="enabled" />
+
+    <!-- This is where we configure Spring-Security -->
+
+    <http
+        access-denied-page="/denied"
+        auto-config="true"
+        create-session="always"
+        use-expressions="true">
+        
+       
+        
+        
+        <form-login
+            always-use-default-target="true"
+            authentication-failure-url="/login?erro=invalido"
+            default-target-url="/"
+            login-page="/login"
+            />
+
+        
+        
+        <!-- <intercept-url pattern="/**" access="permitAll"/> -->
+
+        <intercept-url
+            access="permitAll"
+            pattern="/denied/**" />
+
+        <intercept-url
+            access="permitAll"
+            pattern="/logout/**" />
+
+        <intercept-url
+            access="permitAll"
+            pattern="/login/**" />
+
+        <intercept-url
+            access="permitAll"
+            pattern="/resources/**" />
+        
+          <intercept-url
+            access="permitAll"
+            pattern="/geraarquivo/**" />
+        
+
+        <intercept-url
+            access="hasRole(&apos;ROLE_USER&apos;)"
+            pattern="/**" />
+        <!-- <intercept-url pattern="/**" access="isAuthenticated()"/> -->
+
+
+        <!--
+     		<openid-login login-page="/login" 	authentication-failure-url="/login?error=true"     >
+	    
+      
+ 
+		</openid-login>
+
+        -->
+        
+
+        <logout
+            invalidate-session="true"
+            logout-success-url="/logout" />
+      
+        
+         <custom-filter ref="securityBase" before="FORM_LOGIN_FILTER" />
+        
+    </http>
+    
+           
+    
+
+
+    <beans:bean
+        id="passwordEncoder"
+        class="org.springframework.security.authentication.encoding.Md5PasswordEncoder" >
+    </beans:bean>
+    
+  
+   
+      <beans:bean
+        id="customUserDetailsService"
+        class="br.com.painelcontrole.security.ADNUserDetailsService" />
+<!-- 
+      <beans:bean
+        id="securityBase"
+        class="br.com.painelcontrole.security.securityBase" >
+         <beans:property name="authenticationManager" ref="authenticationManager"></beans:property>
+          </beans:bean> -->
+          
+      
+      <beans:bean id="securityBase" class="br.com.painelcontrole.security.securityBase">
+		<beans:property name="authenticationManager" ref="authenticationManager"/>
+		<beans:property name="authenticationFailureHandler" ref="failureHandler"/>
+ 		<beans:property name="authenticationSuccessHandler" ref="successHandler"/>
+	</beans:bean>
+
+	<beans:bean id="successHandler" class="org.springframework.security.web.authentication.SavedRequestAwareAuthenticationSuccessHandler">
+ 		<beans:property name="defaultTargetUrl" value="/"/>
+	</beans:bean>
+
+	<beans:bean id="failureHandler" class="org.springframework.security.web.authentication.SimpleUrlAuthenticationFailureHandler">
+ 		<beans:property name="defaultFailureUrl" value="/login"/>
+	</beans:bean>
+
+	<beans:bean id="loginUrlAuthenticationEntryPoint" class="org.springframework.security.web.authentication.LoginUrlAuthenticationEntryPoint">
+ 		<beans:property name="loginFormUrl" value="/login"/>
+	</beans:bean>
+
+      
+	
+		 <!-- AD <ldap-server id="ldapServer" ldif="classpath:users.ldiff" manager-dn="cn=adn,cn=users,dc=adn,dc=com,dc=br" manager-password="q392fr6ryg" port="389" url="ldap://vmadnsa58/dc=adn,dc=com,dc=br" /> -->                  
+         <!-- IG <ldap-server id="ldapServer" url="ldap://10.12.11.185/OU=ig,DC=ig,DC=corp" port="389"    manager-dn="CN=Oi Upload,CN=Users,DC=ig,DC=corp"  manager-password="0ln3T12#" /> -->     
+         <ldap-server id="ldapServer" url="ldap://10.12.11.125/DC=oiinternet,DC=corp" port="389"  manager-dn="OIINTERNET\app_sva"  					manager-password="S3rv!c02o13" />      
+
+ 	<authentication-manager alias="authenticationManager">
+        <authentication-provider ref="ldapAuthProvider" />
+    </authentication-manager>
+
+    <beans:bean
+        id="ldapAuthProvider"
+        class="org.springframework.security.ldap.authentication.LdapAuthenticationProvider" >
+
+        <beans:constructor-arg>
+
+            <beans:bean
+                id="bindAuthenticator"
+                class="org.springframework.security.ldap.authentication.BindAuthenticator" >
+
+                <beans:constructor-arg ref="ldapServer" />
+
+                <beans:property
+                    name="userSearch"
+                    ref="userSearch" />
+            </beans:bean>
+        </beans:constructor-arg>
+
+        <beans:constructor-arg>
+
+            <beans:bean class="br.com.painelcontrole.security.ADNAuthoritiesPopulator" >
+
+                <!--
+            <beans:constructor-arg ref="ldapServer"/>
+            <beans:constructor-arg value="ou=groups"/>
+                -->
+                <!-- <beans:property name="searchSubtree" value="false" /> -->
+                <!-- <beans:property name="ignorePartialResultException" value="true" /> -->
+
+            </beans:bean>
+        </beans:constructor-arg>
+
+        <beans:property
+            name="userDetailsContextMapper"
+            ref="MapeamentoUsuario" />
+    </beans:bean>
+
+    <beans:bean
+        id="userSearch"
+        class="org.springframework.security.ldap.search.FilterBasedLdapUserSearch" >
+
+        <beans:constructor-arg
+            index="0"
+            value="" />
+
+        <beans:constructor-arg
+            index="1"
+            value="(sAMAccountName={0})" />
+
+        <beans:constructor-arg
+            index="2"
+            ref="ldapServer" />
+
+        <beans:property
+            name="searchSubtree"
+            value="true" />
+    </beans:bean>
+
+    <beans:bean
+        id="MapeamentoUsuario"
+        class="br.com.painelcontrole.security.ADNCustomUserDetailsMapper" >
+    </beans:bean>
+
+</beans:beans>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context path="/painelcontrole" reloadable="true" crossContext="true">
+			
+    	<Resource name="jdbc/painelcontrole" auth="Container"  removeAbandoned="true"  logAbandoned="true"
+               type="javax.sql.DataSource" driverClassName="oracle.jdbc.driver.OracleDriver" 
+               url="jdbc:oracle:thin:@(DESCRIPTION =    (ADDRESS = (PROTOCOL = TCP)(HOST = homolog-db-oracle-1.dev.infra)(PORT = 1521))    (LOAD_BALANCE = yes)    (CONNECT_DATA =      (SERVER = DEDICATED)      (SERVICE_NAME = PCTL)    )  )"
+               username="APP_PCTLOWN" password="Oi2014" maxActive="-1" maxIdle="-1" 
+               maxWait="-1"/> 
+
+</Context>

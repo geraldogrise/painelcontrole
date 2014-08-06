@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<taglib xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee/web-jsptaglibrary_2_0.xsd"
+	version="2.0">
+	<tlibversion>1.0</tlibversion>
+	<short-name>ADNFw</short-name>
+	<uri>ADNFwTaglib</uri>
+	<tag>
+		<name>select</name>
+		<tag-class>br.com.util.taglib.Select</tag-class>
+		<dynamic-attributes>true</dynamic-attributes>
+		<body-content>empty</body-content>
+		<info>Select  </info>
+		<attribute>
+			<name>nome</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>nmlista</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>valor</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+
+		<attribute>
+			<name>primeirocodigo</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+
+		<attribute>
+			<name>primeiradescricao</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		
+		<attribute>
+			<name>desabilita</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+		</attribute>
+	</tag>
+
+	<tag>
+		<name>flushscript</name>
+		<tag-class>br.com.util.taglib.FlushScript</tag-class>
+		<body-content>empty</body-content>
+		<info>Flush Script  </info>
+	</tag>
+
+	<tag>
+		<name>dataextenso</name>
+		<tag-class>br.com.util.taglib.DataExtenso</tag-class>
+		<body-content>empty</body-content>
+		<info>DataExtenso</info>
+	</tag>
+
+
+	<tag>
+		<name>data</name>
+		<tag-class>br.com.util.taglib.Data</tag-class>
+		<dynamic-attributes>true</dynamic-attributes>
+		<body-content>empty</body-content>
+		<info>Data  </info>
+		<attribute>
+			<name>nome</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>valor</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>acao</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>formulario</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+
+		<attribute>
+			<name>imagem</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+
+	<tag>
+		<name>radio</name>
+		<tag-class>br.com.util.taglib.Radio</tag-class>
+		<dynamic-attributes>true</dynamic-attributes>
+		<body-content>empty</body-content>
+		<info>Radio button  </info>
+		<attribute>
+			<name>nome</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>valor</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+
+		<attribute>
+			<name>valormarcado</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>titulo</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>acao</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>formulario</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+
+</taglib>

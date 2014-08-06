@@ -1,0 +1,514 @@
+/* @import url("../../resources/css/fontes.css"); * CSS RESET * */
+@import url("fontes.css"); /** CSS RESET **/
+html, body {
+	height: 100%;
+}
+* {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	outline: none;
+	text-decoration: none;
+	border: none;
+}
+*:before, *:after {
+	font-family: FontAwesome;
+}
+body {
+	margin: 0 auto;
+	font-family: Arial, Helvetica, sans-serif;
+}
+.limpa {
+	clear: both;
+}
+.quebraEsq {
+	float: left;
+}
+#topo {
+	background-color: #f1f1f1;
+	height: 46px;
+	border-bottom: solid 1px #e7e7e7;
+}
+.off #topo {
+	height: 70px;
+}
+input[type="text"], input[type="password"] {
+	background: url(../../resources/images/bginput-text.gif) no-repeat left top;
+	border: 1px solid #D8D8D8;
+	padding: 6px 5px;
+	border-radius: 5px;
+	color: #767676;
+	font-size: 12px;
+}
+label {
+	display: inline-block;
+	vertical-align: middle;
+	margin: 0 1px;
+	padding: 5px 0 0 0;
+}
+label span {
+	display: block;
+	font-size: 11px;
+	font-weight: bold;
+	color: #626262;
+}
+label.campoData {
+	position: relative;
+	padding: 2px 0;
+}
+label.campoData:after {
+	content: "\f073";
+	color: #fff;
+	position: absolute;
+	right: 3px;
+	bottom: 3px;
+	font-size: 16px;
+	background: url(../../resources/images/bgBtn1.png) repeat-x scroll left top;
+	padding: 3px;
+	border-radius: 5px;
+	text-shadow: 0 1px 0 #000000;
+}
+#topoSite {
+	position: relative;
+}
+.off #topoSite {
+	width: 980px;
+	margin: 0 auto;
+}
+#logoTopo {
+	position: absolute;
+	z-index: 10;
+	left: 250px;
+	top: 3px
+}
+.off #logoTopo {
+	float: left;
+	padding: 3px 0 0 0;
+	position: static
+}
+#logoTopo img {
+	height: 41px
+}
+.off #logoTopo img {
+	height: 64px
+}
+#login {
+	padding: 3px 20px 0 0;
+	float: right;
+}
+#login span {
+	font-size: 10px;
+	font-weight: bold
+}
+.esqueci {
+	color: #54579A;
+	font-size: 9px!important;
+	float: right;
+	margin: 2px 74px 0 0;
+	font-weight: normal!important;
+}
+.esqueci:hover {
+	text-decoration: underline;
+}
+label.lembrar {
+	color: #54579A;
+	font-size: 9px!important;
+	float: left;
+	padding: 3px 0 0 5px;
+	font-weight: normal!important;
+}
+label.lembrar input {
+	display: inline-block;
+	vertical-align: top;
+	margin-bottom: 2px
+}
+.btnPadrao {
+	background: url(../../resources/images/bgBtn1.png) repeat-x left top;
+	height: 30px;
+	display: inline-block;
+	vertical-align: bottom;
+	color: #fff;
+	font-size: 11px;
+	text-align: center;
+	font-weight: bold;
+	text-shadow: 0 1px 0 #000;
+	border-radius: 5px;
+	margin: 0 2px;
+}
+.btnPadrao i {
+	display: block;
+	padding: 8px 10px;
+	font-style: normal;
+}
+div.checkbox {
+	display: inline-block;
+	height: 16px;
+	margin: 0;
+	padding: 0;
+	position: relative;
+	vertical-align: middle;
+	width: 18px;
+}
+.bgCheckbox.checado {
+	background-position: right top;
+}
+.bgCheckbox {
+	background: url(../../resources/images/checkbox.png) no-repeat scroll left top;
+	display: inline-block;
+	height: 16px;
+	vertical-align: middle;
+	width: 18px;
+}
+div.checkbox input[type="checkbox"] {
+	left: 1px;
+	opacity: 0;
+	filter: alpha(opacity = 0);
+	position: absolute;
+	top: -91px;
+	z-index: 1;
+}
+#bemVindo {
+	float: left;
+	font-size: 12px;
+	font-weight: bold;
+	padding: 7px 0 0 310px;
+	position:absolute;
+	z-index:99999;
+}
+#bemVindo span {
+	display: block;
+	padding: 0 0 5px 0
+}
+.sairSistema {
+	color: #54579A;
+	font-size: 9px!important;
+	font-weight: normal!important;
+	text-shadow: 0 1px 1px #FFFFFF;
+	text-decoration: underline;
+}
+#barraTopo {
+	background: url(../../resources/images/bgminimenu.gif) repeat-x scroll 0 0;
+	height: 28px;
+	clear: both;
+	margin: 0 0 0 -10px;
+	position: relative;
+	z-index: 10;
+}
+.filtro {
+	position: absolute;
+	right: 10px;
+	top: 5px;
+}
+.filtro .lupa {
+	display: inline-block;
+	cursor: pointer;
+	color: #666;
+	font-size: 17px;
+	font-style: normal;
+}
+.filtro .lupa:after {
+	content: "\f002";
+}
+.fecharFiltro {
+	left: -9px;
+	position: absolute;
+	top: -9px;
+	z-index: 1;
+	font-size: 20px;
+	cursor: pointer;
+}
+.fecharFiltro:after {
+	color: #00A9AC;
+	content: "\f057";
+}
+.conteudoFiltro {
+	background-color: #fefefe;
+	position: absolute;
+	right: 20px;
+	border-radius: 5px;
+	border: solid 1px #D8D8D9;
+	box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+	padding: 5px;
+	display: none;
+}
+.filtro.ativo .conteudoFiltro {
+	display: block
+}
+.filtro.ativo:before {
+	content: "\f0da";
+	font-size: 20px;
+	position: absolute;
+	right: 13px;
+	z-index: 999999;
+	color: #D8D8D9;
+	box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+.migalha {
+	padding: 9px 0 0 30px;
+	color: #666;
+	font-family: "oratorbold", Arial, sans-serif;
+	font-size: 10px;
+	position: relative;
+	text-transform: uppercase;
+}
+.migalha a {
+	color: #54579A;
+	font-weight: bold;
+}
+.migalha a:hover {
+	text-decoration: underline;
+}
+#ladoEsq {
+	position: fixed;
+	height: 100%;
+	width: 220px;
+	background: url(../../resources/images/menu-shadow.png) repeat-y right top #00A9AC;
+	bottom: 0;/*box-shadow:inset -5px 0 15px #333;*/
+}
+.nomeSistema {
+	font-family: "orator", Arial, sans-serif;
+	font-size: 24px;
+	text-align: center;
+	position: absolute;
+	z-index: 2;
+	width: 100%;
+	padding: 11px 0 0 0;
+	text-shadow: 0 1px 0 #FFFFFF;
+	overflow: hidden
+}
+.nomeSistema div {
+	padding-left: 450px
+}
+.nomeSistema span {
+	display: inline-block;
+	width: 300px;
+	padding-right: 450px
+}
+#menuEsq {
+	clear: both
+}
+.item {
+	padding: 5px 0
+}
+.item span {
+	display: block;
+	color: #fff;
+	font-family: "oratorbold", Arial, sans-serif;
+	text-align: center;
+	font-size: 14px
+}
+.item a {
+	display: block;
+	height: 112px;
+	width: 200px;
+	margin: 0 auto;
+	background-color: #fff;
+	position: relative;
+}
+.ativo.item a:after {
+	color: #FFFFFF;
+	content: "\f0d9";
+	font-size: 28px;
+	position: absolute;
+	right: -13px;
+	top: 35px;
+	z-index: 10;
+}
+.primeiro.ativo.item a:after {
+	top: 85px;
+}
+#conteudo {
+	clear: both;
+	padding: 0 0 0 230px
+}
+.boxGrid table {
+	border-collapse: collapse;
+	color: #000000;
+	font-family: "museo_sans100", Arial, Helvetica, sans-serif;
+	font-size: 14px;
+}
+.boxGrid {
+	clear: both;
+	width: 100%;
+	overflow: auto;
+}
+.boxGrid table {
+	border-collapse: collapse;
+	font-family: "museo_sans100", Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	color: #000;
+	min-width: 980px;
+	border-bottom: solid 1px #efefef
+}
+.boxGrid table th {
+	font-family: "museo_sans500", Arial, Helvetica, sans-serif;
+	color: #333;
+	font-weight: normal;
+	height: 45px;
+	border-right: 1px solid #efefef;
+	background-color: #6A65A5;
+	color: #fff;
+}
+.boxGrid table th.thBg2 {
+	background-color: #00A9AC;
+	border-bottom: 1px solid #efefef;
+}
+.boxGrid table td {
+	height: 52px;
+	border-right: 1px solid #efefef;
+}
+.boxGrid table td span.local {
+	color: #970404;
+	font-family: "museo_sans300", Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	display: block
+}
+.boxGrid table td span.local a {
+	color: #970404;
+}
+.boxGrid table th, .boxGrid table td {
+	padding: 0 4px
+}
+.boxGrid table.tabelaSistema tr.linhaEscura {/* background:url(../images/bgTitulo2.jpg) repeat left top;*/
+	background-color: #E9EAEB
+}
+.boxGrid table tr.linhaEscura td {
+	border-right: 1px solid #fefefe;
+}
+.imgPreload {
+	background: url("../../resources/images/ajax-loader.gif") no-repeat scroll center center transparent;
+	height: 100%;
+	position: fixed;
+	width: 100%;
+	z-index: 9999999999999;
+}
+.bgPreload {
+	background: none repeat scroll 0 0 #FFFFFF;
+	height: 100%;
+	opacity: 0.3;
+	filter: alpha(opacity = 30);
+	position: fixed;
+	width: 100%;
+	z-index: 9999999999998;
+}
+.btn {
+	border-radius: 5px;
+	background: url(../../resources/images/bginput-text.gif) no-repeat left top;
+	border: 1px solid #D8D8D8;
+	font-size: 12px;
+	padding: 7px 7px 13px 7px;
+	height: 7px;
+	color: #717171;
+	cursor: pointer;
+}
+.combo {
+	position: relative;
+}
+.combo select {
+	position: absolute;
+	opacity: 0;
+	filter: alpha(opacity = 0);
+	bottom: 0;
+	left: 0;
+	height: 36px;
+	z-index: 1;
+	cursor: pointer;
+	width: 100%;
+	font: 13px "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+.combo.desabilitado .btn {
+	background: #F5F5F5
+}
+.textoValorCombo:after {
+	content: "\f0d7";
+	float: right;
+	vertical-align: top;
+	display: table-cell;
+}
+.desabilitado.textoValorCombo:after {
+	content: "";
+}
+fieldset {
+	border: 1px solid #AAAAAA;
+	display: inline-block;
+	margin: 0;
+	padding: 0 2px 2px;
+	vertical-align: bottom;
+	font-size: 11px;
+}
+.bgMpR {
+	background-color: #EAEBEC;
+	height: 100%
+}
+.bgCimaMpR {
+	background: url(../../resources/images/bgtopmain.png) repeat-x top left;
+}
+.mapaRelatorios {
+	margin: 0 auto;
+	text-align: center;
+	padding: 30px 0 0 0;
+	background: url(../../resources/images/bgbottommain.png) repeat-x bottom left;
+	min-height: 500px
+}
+.boxRelatorios {
+	display: inline-block;
+	width: 25%;
+	overflow: hidden;
+	box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+	margin: 10px;
+	border-radius: 10px;
+}
+.boxRelatorios a {
+	display: block;
+	position: relative;
+	color: #fff;
+	opacity: 0.5;
+	filter: alpha(opacity = 50);
+}
+.boxRelatorios a.ativo {
+	opacity: 1!important;
+	filter: alpha(opacity = 100)!important;
+}
+.boxRelatorios a img {
+	width: 100%
+}
+.boxRelatorios a span {
+	font-size: 14px;
+	background: url(../../resources/images/bgTitRel.png);
+	position: absolute;
+	z-index: 1;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	padding: 5px 0;
+	font-family: "novecento_wide_boldbold", Arial, sans-serif;
+}
+.filtro table {
+	min-width: inherit
+}
+.filtro table th, .filtro table td {
+	height: 25px
+}
+.comboDiferente {
+	background: url(../../resources/images/bginput-text.gif) no-repeat scroll left top;
+	border: 1px solid #D8D8D8;
+	border-radius: 5px;
+	color: #767676;
+	font-size: 12px;
+	padding: 6px 5px;
+	cursor: pointer;
+}
+.comboDiferente:after {
+	content: "\f0d7";
+	float: right;
+	vertical-align: top;
+	display: table-cell;
+}
+
+.gridComDif{ display:none}
+
+.boxGridAtivo{box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);}
+
+
+
+

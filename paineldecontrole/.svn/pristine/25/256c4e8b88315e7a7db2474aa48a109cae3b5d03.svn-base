@@ -1,0 +1,132 @@
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="br.com.controller.MonitoramentoController"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib uri="http://www.opensymphony.com/sitemesh/decorator"
+	prefix="dec"%>
+<%@ taglib uri="http://www.springframework.org/security/tags"
+	prefix="sec"%>
+<%@ taglib prefix="ADNTags" uri="ADNFwTaglib"%>
+<%@page import="java.util.*"%>
+<%@ page language="java" contentType="text/html"%>
+
+
+<div class="ajax lista">
+	<div id="barraTopo">
+		<div class="migalha">
+			<span>Monitoramento dos Lotes</span>
+		</div>
+
+		<div class="filtro" id="filtroMonitoramento">
+
+			<div class="conteudoFiltro" style="width: 237px">
+				<span class="fecharFiltro" onclick="escondeFiltro(this)"></span>
+
+				<fieldset>
+					<legend>PERÍODO</legend>
+					<label style="padding-top: 0"> <ADNTags:data acao="C"
+							nome="dt_ini" id="dt_ini" formulario="" valor=""
+							imagem="../../painelcontrole/resources/imagem/images/bt_calendario.png"
+							style="width:70px;" /> </label> <label> <span>A</span> </label> <label
+						style="padding-top: 0"> <ADNTags:data acao="C"
+							nome="dt_fin" id="dt_fin" formulario="" valor=""
+							imagem="../../painelcontrole/resources/imagem/images/bt_calendario.png"
+							style="width:70px;" /> </label>
+				</fieldset>
+				<!-- <fieldset>
+					<legend>Período</legend>
+					<label class="campoData"> <input id="dt_ini" type="text"
+						style="width: 86px" /> </label> <label><span>Até</span> </label> <label
+						class="campoData"> <input id="dt_fin" type="text"
+						style="width: 86px" /> </label>
+				</fieldset> -->
+
+				<div class="limpa"></div>
+				<label> <span>Terminal</span> <select id="tipoterminal"
+					style="width: 137px">
+						<option>PRE</option>
+						<option>POS</option>
+						<option>FIXO</option>
+				</select> </label> <a class="btnPadrao" href="javascript:void(0)"
+					onclick="fnPesquisar('#dadoslista_monitoramento','monitoramento','Dados não existentes!');"><i
+					class="consultar"> Pesquisar</i> </a>
+			</div>
+
+			<i class="lupa" onclick="mostraFiltro(this)"></i>
+		</div>
+
+	</div>
+
+
+	<div class="boxGrid">
+		</table>
+		<table border="0" cellpadding="0" cellspacing="0" width="100%"
+			class="tabelaSistema" id="dadoslista_monitoramento">
+			<tr>
+				<td width='100%' align="center">NECESSÁRIO APLICAR FILTRO</td>
+			</tr>
+		</table>
+	</div>
+</div>
+<div class="ajax crudtela"></div>
+<script>
+	var _RetornoOutrasChaves;
+
+	mostraFiltro("#filtroMonitoramento");
+
+	 $(function() {
+		alternaLinha();
+		montaCombo("#terminal");
+	}); 
+
+	function getChave() {
+
+		var Retorno = '';
+
+		if ($("#dt_ini").val() != "")
+			Retorno = AddSeparador(Retorno, ' {name:"dt_ini", value:"'
+					+ $("#dt_ini").val() + '"}', ',');
+		if ($("#dt_fin").val() != "")
+			Retorno = AddSeparador(Retorno, ' {name:"dt_fin", value:"'
+					+ $("#dt_fin").val() + '"}', ',');
+		if ($("#tipoterminal").val() != "")
+			Retorno = AddSeparador(Retorno, ' {name:"tipoterminal", value:"'
+					+ $("#tipoterminal").val() + '"}', ',');
+
+		return eval("[" + Retorno + "]");
+	}
+
+	function setOutrasChavesIndex(_nomelote) {
+		_RetornoOutrasChaves = "";
+		if (_nomelote != "")
+			_RetornoOutrasChaves = AddSeparador(_RetornoOutrasChaves,
+					' {name:"nomelote", value:"' + _nomelote + '"}', ',');
+
+	}
+
+	function getChaveCrud() {
+
+		return eval("[" + _RetornoOutrasChaves + "]");
+
+	}
+
+	function validaFiltro() {
+
+		if ($("#dt_ini").val() > $("#dt_fin").val()) {
+			MensagemGrowl('Data Inicial não pode ser maior que Data Final',
+					'VALIDACAO');
+			return false;
+		}
+
+		if ($("#dt_ini").val() == '' || $("#dt_fin").val() == '') {
+			MensagemGrowl('Data Inicial e Data Final devem ser preenchidas!',
+					'VALIDACAO');
+			return false;
+		}
+
+		return true;
+
+	}
+
+	<ADNTags:flushscript/> 
+</script>

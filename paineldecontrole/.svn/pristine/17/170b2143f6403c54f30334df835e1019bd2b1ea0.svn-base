@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="relatorio_tipo_uso_provider" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<property name="ireport.zoom" value="2.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="p_xml" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="p_periodo" class="java.lang.String"/>
+	<queryString language="plsql">
+		<![CDATA[{ call UP_REL_TIPOUSO_PROVIDER_BFM ($P{p_xml}, $P{ORACLE_REF_CURSOR}) }]]>
+	</queryString>
+	<field name="DATA_INCLUSAO" class="java.lang.String"/>
+	<field name="CD_EVENTO" class="java.lang.String"/>
+	<field name="DATA_EVENTO" class="java.lang.String"/>
+	<field name="CD_TIPO_USO" class="java.lang.String"/>
+	<field name="PROVIDER" class="java.lang.String"/>
+	<field name="QTDE" class="java.math.BigDecimal"/>
+	<field name="VALOR" class="java.math.BigDecimal"/>
+	<field name="CUSTO_UNITARIO" class="java.math.BigDecimal"/>
+	<field name="CUSTO_CAP_TELECOM" class="java.math.BigDecimal"/>
+	<field name="CUSTO_COMISSAO" class="java.math.BigDecimal"/>
+	<field name="PERCENTUAL_DESPESA" class="java.math.BigDecimal"/>
+	<field name="VALOR_DESPESA_ESTIMADO" class="java.math.BigDecimal"/>
+	<variable name="QTDE_1" class="java.lang.Integer" calculation="Count">
+		<variableExpression><![CDATA[$F{QTDE}]]></variableExpression>
+	</variable>
+	<variable name="QTDE_2" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[$F{QTDE}]]></variableExpression>
+	</variable>
+	<variable name="VALOR_1" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[$F{VALOR}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="555" height="51" forecolor="#990099"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="24"/>
+				</textElement>
+				<text><![CDATA[TIPO DE USO PROVIDER - BFM]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="0" y="51" width="555" height="28"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{p_periodo}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="43" splitType="Stretch">
+			<staticText>
+				<reportElement x="66" y="21" width="53" height="20"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[INCLUSÃO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="5" y="20" width="43" height="20"/>
+				<textElement textAlignment="Right"/>
+				<text><![CDATA[EVENTO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="164" y="21" width="53" height="20"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[EVENTO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="244" y="20" width="49" height="20"/>
+				<textElement textAlignment="Right"/>
+				<text><![CDATA[TIPO USO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="323" y="20" width="54" height="20"/>
+				<textElement/>
+				<text><![CDATA[PROVIDER]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="408" y="20" width="46" height="20"/>
+				<textElement textAlignment="Right"/>
+				<text><![CDATA[QTDE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="489" y="20" width="47" height="20"/>
+				<textElement textAlignment="Right"/>
+				<text><![CDATA[VALOR]]></text>
+			</staticText>
+			<line>
+				<reportElement x="66" y="16" width="151" height="1"/>
+			</line>
+			<staticText>
+				<reportElement x="66" y="2" width="151" height="18"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[DATA]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="24" splitType="Stretch">
+			<textField>
+				<reportElement x="66" y="3" width="53" height="20"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{DATA_INCLUSAO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="5" y="3" width="43" height="20"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{CD_EVENTO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="164" y="3" width="53" height="20"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{DATA_EVENTO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="244" y="3" width="49" height="20"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{CD_TIPO_USO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="323" y="3" width="54" height="20"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{PROVIDER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="">
+				<reportElement x="408" y="3" width="46" height="20"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{QTDE}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00;-#,##0.00">
+				<reportElement x="489" y="3" width="47" height="20"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{VALOR}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch">
+			<textField pattern="#,##0;-#,##0">
+				<reportElement x="408" y="12" width="46" height="20"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$V{QTDE_2}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00;-#,##0.00">
+				<reportElement x="489" y="12" width="47" height="20"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$V{VALOR_1}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="323" y="12" width="54" height="20"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<text><![CDATA[TOTAL:]]></text>
+			</staticText>
+		</band>
+	</summary>
+</jasperReport>
